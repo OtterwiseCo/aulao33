@@ -1,25 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from './logo.svg'
+import './App.css'
+import { Fragment } from 'react'
+
+import Link from './components/Link'
+import { links } from './constants/links'
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+    <div className='App'>
+      <header className='App-header'>
+        <img src={logo} className='App-logo' alt='logo' />
+        <p>Otterwise</p>
+        {links.map(({ href, text, id }) => (
+          <Link key={id} to={href}>
+            {text}
+          </Link>
+        ))}
+        {['Exemplo 1', 'Exemplo 2'].map(text => (
+          <Fragment key={text}>
+            <span>Filho:</span>
+            <span>{text}</span>
+          </Fragment>
+        ))}
       </header>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
